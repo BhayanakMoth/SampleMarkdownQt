@@ -42,25 +42,57 @@ void MainWindow::on_actionBold_triggered() {
 	}
 	else {
 		auto frag = cursor.selection();
-		auto qstr =  frag.toPlainText();
+		auto qstr = frag.toPlainText();
 		auto stdstr = qstr.toStdString();
 		size_t loc = stdstr.find("**");
 		if (loc != std::string::npos) {
-			stdstr.erase(loc, loc + 2);
+			stdstr.erase(loc,2);
 			size_t loc2 = stdstr.find_last_of("**");
-			if(loc2 != std::string::npos)
-			stdstr.erase(loc2-1, loc2 );
+			if (loc2 != std::string::npos)
+				stdstr.erase(loc2-1,2);
 			if (loc != 0) {
 				stdstr = "**" + stdstr + "**";
 			}
 			auto qstr2 = qstr.fromStdString(stdstr);
-			
+
 			auto newfrag = frag.fromPlainText(qstr2);
 			cursor.insertFragment(newfrag);
 			return;
 		}
 		else {
 			qstr = "**" + qstr + "**";
+			auto newfrag = frag.fromPlainText(qstr);
+			cursor.insertFragment(newfrag);
+		}
+	}
+
+}
+void MainWindow::on_actionItalics_triggered() {
+	auto cursor = ui.editor->textCursor();
+	if (cursor.selectedText().isEmpty()) {
+		cursor.insertText("*Insert Text Here*");
+	}
+	else {
+		auto frag = cursor.selection();
+		auto qstr = frag.toPlainText();
+		auto stdstr = qstr.toStdString();
+		size_t loc = stdstr.find("*");
+		if (loc != std::string::npos) {
+			stdstr.erase(loc,1);
+			size_t loc2 = stdstr.find_last_of("*");
+			if (loc2 != std::string::npos)
+				stdstr.erase(loc2, 1);
+			if (loc != 0) {
+				stdstr = "*" + stdstr + "*";
+			}
+			auto qstr2 = qstr.fromStdString(stdstr);
+
+			auto newfrag = frag.fromPlainText(qstr2);
+			cursor.insertFragment(newfrag);
+			return;
+		}
+		else {
+			qstr = "*" + qstr + "*";
 			auto newfrag = frag.fromPlainText(qstr);
 			cursor.insertFragment(newfrag);
 		}

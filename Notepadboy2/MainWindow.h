@@ -14,6 +14,8 @@ private slots:
 	void on_actionSave_triggered();
 	void on_actionSave_As_triggered();
 	void on_actionBold_triggered();
+	void on_actionItalics_triggered();
+	//void on_actionBold_triggered();
 private:
     Ui::MainWindowClass ui;
 	Document m_content;
