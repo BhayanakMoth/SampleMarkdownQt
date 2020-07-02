@@ -16,18 +16,27 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="QSplitter" name="splitter">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <widget class="QPlainTextEdit" name="editor"/>
-      <widget class="QWebEngineView" name="preview">
-       <property name="url">
-        <url>
-         <string>about:blank</string>
-        </url>
-       </property>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <widget class="QWidget" name="page">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QSplitter" name="splitter">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <widget class="QPlainTextEdit" name="editor"/>
+          <widget class="QWebEngineView" name="preview">
+           <property name="url">
+            <url>
+             <string>about:blank</string>
+            </url>
+           </property>
+          </widget>
+         </widget>
+        </item>
+       </layout>
       </widget>
+      <widget class="QWidget" name="page_2"/>
      </widget>
     </item>
    </layout>
