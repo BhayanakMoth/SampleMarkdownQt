@@ -49,7 +49,7 @@
 **
 ****************************************************************************/
 
-#include "document.h"
+#include "Document.h"
 
 void Document::setText(const QString &text)
 {
